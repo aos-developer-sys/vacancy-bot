@@ -1,0 +1,15 @@
+# secrets
+.env
+
+# Telegram session files (equivalent to auth tokens - never commit)
+*.session
+*.session-journal
+
+# runtime state / data
+*.sqlite3
+*.log
+
+# python
+__pycache__/
+*.pyc
+venv/
