@@ -18,7 +18,7 @@ HH_SEARCH_TEXT = os.environ.get(
     '"project manager" OR "программный директор" OR "руководитель проекта" OR '
     '"руководитель проектов" OR "program manager" OR "delivery manager" OR '
     '"technical project manager" OR "engineering manager" OR "руководитель направления" OR '
-    '"account director" OR PMO'
+    '"account director" OR PMO OR "проектный офис"'
 )
 
 # Регион поиска: 113 = Россия, 1 = Москва, 2 = Санкт-Петербург (см. https://api.hh.ru/areas)
@@ -26,6 +26,26 @@ HH_AREA = os.environ.get('HH_AREA', '113')
 
 # Как часто опрашивать HH.ru, секунд
 HH_POLL_INTERVAL = int(os.environ.get('HH_POLL_INTERVAL', 1800))
+
+# OAuth-приложение HH.ru (dev.hh.ru), client_credentials flow. Обязательны.
+HH_CLIENT_ID = os.environ['HH_CLIENT_ID']
+HH_CLIENT_SECRET = os.environ['HH_CLIENT_SECRET']
+
+# Пауза между запросами полного описания вакансии, секунд
+HH_REQUEST_DELAY = float(os.environ.get('HH_REQUEST_DELAY', 0.3))
+
+# Опционально: id профролей через запятую для сужения поиска на стороне HH
+# (см. https://api.hh.ru/professional_roles). 107 = "Руководитель проектов".
+# Пусто по умолчанию - таксономия HH слишком грубая, чтобы полагаться на неё одну;
+# основной арбитр качества - keyword-скоринг в filters.py.
+HH_PROFESSIONAL_ROLES = os.environ.get('HH_PROFESSIONAL_ROLES', '')
+
+# Опционально: id уровней опыта через запятую (noExperience, between1And3,
+# between3And6, moreThan6). Пусто = без фильтра по опыту на стороне HH.
+HH_EXPERIENCE = os.environ.get('HH_EXPERIENCE', '')
+
+# Глубина поиска в часах при самом первом запуске (пока нет сохранённого cutoff)
+HH_INITIAL_LOOKBACK_HOURS = int(os.environ.get('HH_INITIAL_LOOKBACK_HOURS', 24))
 
 SOURCE_CHANNELS = [
     'Relocats',

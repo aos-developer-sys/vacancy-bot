@@ -5,6 +5,9 @@
 *.session
 *.session-journal
 
+# HH.ru OAuth access token cache - equivalent to an auth token, never commit
+hh_token_cache.json
+
 # runtime state / data
 *.sqlite3
 *.log
