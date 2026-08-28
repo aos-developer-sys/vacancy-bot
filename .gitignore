@@ -16,3 +16,6 @@ hh_token_cache.json
 __pycache__/
 *.pyc
 venv/
+
+# local Claude Code instructions - не относится к самому проекту, не в репозитории
+CLAUDE.md
